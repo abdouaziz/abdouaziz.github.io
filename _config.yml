@@ -24,6 +24,7 @@ search: true
 
 # Build settings
 markdown: kramdown
+repository: abdouaziz/abdouaziz.github.io
 remote_theme: mmistakes/minimal-mistakes
 #theme: minimal-mistakes-jekyll
 # Outputting
@@ -112,3 +113,12 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+
+comments:
+  provider: "utterances"
+  utterances:
+    theme: "github-light" # "github-dark"
+    issue_term: "pathname"
+    label: "comment" # Optional - must be existing label.
+
