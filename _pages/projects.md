@@ -1,6 +1,7 @@
 ---
 title: 'Projects'
 layout: categories
+entries
 permalink: /projects/
 author_profile: true
 excerpt: 'You will find below a list of the different projects I realized , as well as links to the source codes, if publicly available.'
