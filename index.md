@@ -1,15 +1,21 @@
 ---
 permalink: /
 layout: archive
-title: "Hello there!"
+title: "Abdou Aziz DIOP"
+excerpt: "PhD Researcher in Speech-to-Speech Translation"
 author_profile: true
-
+header:
+  overlay_color: "#1a365d"
+  overlay_filter: "0.3"
+  overlay_image: /assets/images/good.jpg
 ---
 
-:wave:  Welcome ,i am Abdou Aziz DIOP . I am a Senegalese data scientist currently living in Senegal.
+**PhD Researcher · Speech-to-Speech Translation**
 
-I am passionate about data, and since 2019 I focus more on Data Scientist and more specifically on NLP . 
+I am **Abdou Aziz DIOP**, a Senegalese researcher based in Senegal. I recently started my **PhD in Speech-to-Speech Translation**, building on several years of work in NLP and machine learning.
 
-In relation to my course, after having a degree in Mathematics and Computer Science, a master's degree in mathematics whose thesis was in Algebra the subject is: "Rank Based Cryptography Encryption & Signature", I enrolled in the University Cheikh Anta DIOP for the training of Data Transmission and Information System, it is at this training that I began to do Machine Learning, followed by several certifications finally to better understand the field of AI. 
+**Research focus:** Automatic Speech Recognition (ASR), Neural Machine Translation, multilingual systems, and **Conversational AI with African languages**.
 
-Today, my research topics are Automatic Speech Recognition (ASR), Neural Machine Translation, Multilingual, Conversational AI with African languages 
+**Background:** After a degree in Mathematics and Computer Science and a Master’s in Mathematics (thesis: *Rank-Based Cryptography — Encryption & Signature*), I trained in Data Transmission and Information Systems at Université Cheikh Anta Diop, where I began working on machine learning and AI. I have since focused on data science and NLP, with a strong interest in low-resource and African languages.
+
+**Connect:** [LinkedIn](https://www.linkedin.com/in/abdouaziiz/) · [GitHub](https://github.com/abdouaziz) · [Twitter](https://twitter.com/abdouaziiz)

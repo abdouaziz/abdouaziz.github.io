@@ -15,12 +15,14 @@
 # in the templates via {{ site.myvariable }}.
 title: Abdou Aziz DIOP
 masthead_title: "Abdou Aziz DIOP"
+subtitle: "PhD Researcher · Speech-to-Speech Translation"
 logo: "/assets/Log.png"
 email: abdouaziz@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  ML & NLP Research Engineer.
+  PhD Researcher in Speech-to-Speech Translation. ASR, NMT, Multilingual & African Languages.
 twitter_username: "abdouaziiz"
 github_username: "abdouaziz"
+linkedin_username: "abdouaziiz"
 minimal_mistakes_skin: default
 search: true
 
@@ -62,32 +64,32 @@ plugins:
 author:
   name   : "Abdou Aziz DIOP"
   avatar : "/assets/images/A1.png"
-  bio    : "ML & NLP Research Engineer."
+  bio    : "PhD Researcher in Speech-to-Speech Translation. Focus on ASR, NMT & African languages."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://abdouaziz.github.io"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/abdouaziiz"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/abdouaziiz/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/abdouaziz"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/abdouaziiz"
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/abdouaziiz/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/abdouaziz"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/abdouaziiz"
 
 defaults:
   # _posts

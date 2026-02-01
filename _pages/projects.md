@@ -1,10 +1,9 @@
 ---
-title: 'Projects'
+title: "Projects"
 layout: categories
-entries
 permalink: /projects/
 author_profile: true
-excerpt: 'You will find below a list of the different projects I realized , as well as links to the source codes, if publicly available.'
+excerpt: "A selection of projects in NLP, ASR, and ML — with links to source code where available."
 ---
 
 ## NLP / Computational linguistics 
