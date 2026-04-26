@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdou Aziz Diop — NLP Research Engineer (Speech, African Languages)</title>
+  <meta name="description" content="Abdou Aziz Diop — NLP Research Engineer working on speech-to-speech translation, ASR, and self-supervised learning for low-resource African languages. PhD researcher at UCAD, Dakar." />
+  <meta name="author" content="Abdou Aziz Diop" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Abdou Aziz Diop — NLP Research Engineer" />
+  <meta property="og:description" content="Speech-to-speech translation, ASR, and NLP for low-resource African languages." />
+  <meta property="og:url" content="https://abdouaziz.github.io/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #f4efe6;
+      --bg-soft:   #ebe4d6;
+      --ink:       #1a1a1a;
+      --ink-soft:  #4a4a4a;
+      --ink-mute:  #8a8478;
+      --rule:      #d8cfbe;
+      --accent:    #b34a25;     /* warm terracotta / Sahel ochre */
+      --accent-soft:#d97a4a;
+      --highlight: #f0e0c4;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans:  'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      --mono:  'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color .15s ease, border-color .15s ease;
+    }
+    a:hover { color: var(--accent); border-color: var(--accent); }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    /* ───────── Layout ───────── */
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ───────── Top nav ───────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(244,239,230,.78);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 24px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: .01em;
+      border: none;
+    }
+    .nav-name em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+      font-family: var(--mono);
+      letter-spacing: .02em;
+    }
+    .nav-links a {
+      border: none;
+      color: var(--ink-soft);
+    }
+    .nav-links a:hover { color: var(--accent); }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ───────── Hero ───────── */
+    .hero {
+      padding: 84px 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 52px 0 36px; }
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-right: 12px;
+      transform: translateY(-3px);
+    }
+
+    h1.name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(42px, 6vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    h1.name .last {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .role {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 19px;
+      color: var(--ink-soft);
+      margin: 0 0 28px;
+    }
+    .role .dot {
+      color: var(--accent);
+      margin: 0 8px;
+    }
+    .blurb p {
+      font-size: 17.5px;
+      line-height: 1.7;
+      color: var(--ink);
+      max-width: 60ch;
+      margin: 0 0 16px;
+    }
+    .blurb p.muted {
+      color: var(--ink-soft);
+      font-size: 16px;
+    }
+    .blurb a { color: var(--ink); border-bottom-color: var(--accent); }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 26px;
+      font-family: var(--mono);
+      font-size: 13.5px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 13px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      color: var(--ink);
+      background: transparent;
+      transition: all .15s ease;
+    }
+    .pill:hover {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    .pill svg { width: 13px; height: 13px; }
+
+    /* portrait card */
+    .portrait {
+      position: relative;
+      aspect-ratio: 4/5;
+      border: 1px solid var(--rule);
+      background: var(--bg-soft);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.92) contrast(1.02);
+    }
+    .portrait::after {
+      content: "Dakar · 14.7°N";
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: rgba(26,26,26,.78);
+      padding: 4px 8px;
+      border-radius: 2px;
+    }
+    .portrait-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--ink-mute);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-align: center;
+      padding: 16px;
+    }
+    .portrait-empty svg { margin-bottom: 12px; opacity: .5; }
+
+    /* ───────── Section primitives ───────── */
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--rule);
+    }
+    section:last-of-type { border-bottom: 1px solid var(--rule); }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 720px) {
+      .sec-head { grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; }
+    }
+    .sec-label {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 8px;
+    }
+    .sec-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .sec-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+    .sec-body { padding-left: 0; }
+    @media (min-width: 721px) {
+      .sec-body { padding-left: 260px; margin-top: -18px; }
+    }
+
+    /* ───────── News ───────── */
+    .news-list { display: flex; flex-direction: column; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px dashed var(--rule);
+    }
+    .news-item:first-child { border-top: none; padding-top: 0; }
+    .news-date {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-top: 3px;
+    }
+    .news-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .news-text .tag {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 8px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+    @media (max-width: 540px) {
+      .news-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ───────── Experience ───────── */
+    .xp { display: flex; flex-direction: column; gap: 28px; }
+    .xp-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+    }
+    .xp-date {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .08em;
+      color: var(--ink-mute);
+      padding-top: 6px;
+    }
+    .xp-role {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -.005em;
+      margin: 0 0 4px;
+    }
+    .xp-org {
+      font-family: var(--sans);
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      margin: 0 0 10px;
+    }
+    .xp-org em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .xp-bullets {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 15.5px;
+      color: var(--ink-soft);
+    }
+    .xp-bullets li { margin-bottom: 6px; }
+    @media (max-width: 540px) {
+      .xp-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ───────── Publications & Projects cards ───────── */
+    .cards { display: flex; flex-direction: column; gap: 20px; }
+    .card {
+      padding: 22px 24px;
+      border: 1px solid var(--rule);
+      background: rgba(255,255,255,.35);
+      border-radius: 3px;
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      background: rgba(255,255,255,.6);
+    }
+    .card h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 1.3;
+      margin: 0 0 8px;
+      letter-spacing: -.005em;
+    }
+    .card h3 a { border: none; }
+    .card h3 a:hover { color: var(--accent); }
+    .card .meta {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--ink-mute);
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin: 0 0 14px;
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag-chip {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: .05em;
+      padding: 2px 9px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: var(--bg);
+    }
+    .award {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .card-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .card-links a {
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-soft);
+    }
+    .card-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .more-link {
+      display: inline-block;
+      margin-top: 22px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .04em;
+      border-bottom: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .more-link::after {
+      content: "→";
+      margin-left: 6px;
+      transition: transform .2s ease;
+      display: inline-block;
+    }
+    .more-link:hover::after { transform: translateX(4px); }
+
+    /* ───────── Skills ───────── */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px 36px;
+    }
+    @media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
+    .skill-group h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 17px;
+      margin: 0 0 8px;
+      letter-spacing: -.005em;
+    }
+    .skill-group p {
+      margin: 0;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .skill-group p .sep { color: var(--accent); margin: 0 4px; }
+
+    /* ───────── Footer ───────── */
+    footer {
+      padding: 40px 0 60px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink-mute);
+      letter-spacing: .04em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a { color: var(--ink-soft); border: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* ───────── Reveal on scroll ───────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─────────────── NAV ─────────────── -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="nav-name">Abdou Aziz <em>Diop</em></a>
+      <div class="nav-links">
+        <a href="#news">News</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="mailto:abdouaziz@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+
+    <!-- ─────────────── HERO ─────────────── -->
+    <header class="hero">
+      <div class="hero-text">
+        <div class="eyebrow">NLP Research Engineer · Speech</div>
+        <h1 class="name">Abdou Aziz <span class="last">Diop</span></h1>
+        <p class="role">PhD Researcher <span class="dot">·</span> Speech-to-Speech Translation <span class="dot">·</span> Dakar, Senegal</p>
+
+        <div class="blurb">
+          <p>
+            I build speech and language technology for low-resource African languages —
+            with a focus on automatic speech recognition, neural machine translation,
+            and self-supervised learning for speech.
+          </p>
+          <p>
+            Currently a PhD researcher at <a href="https://www.ucad.sn/" target="_blank" rel="noopener">Université Cheikh Anta Diop (UCAD)</a>,
+            working on end-to-end <strong>Speech-to-Speech Translation</strong> for Wolof, Pulaar, and other West African languages.
+            Previously Lead Data Scientist at <a href="https://lafricamobile.com/" target="_blank" rel="noopener">LAfricaMobile</a>,
+            where I led a team building NLU/NLG and end-to-end TTS systems for local languages.
+          </p>
+          <p class="muted">
+            Open to research collaborations and roles building production speech systems for under-served languages.
+          </p>
+        </div>
+
+        <div class="links-row">
+          <a class="pill" href="mailto:abdouaziz@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 6 8 7 8-7"/></svg>
+            Email
+          </a>
+          <a class="pill" href="https://github.com/abdouaziz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+            GitHub
+          </a>
+          <a class="pill" href="https://www.linkedin.com/in/abdouaziiz/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V8h3zm-1.5-12.3a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-5.7c0-1.4-.5-2.3-1.7-2.3a1.9 1.9 0 0 0-1.8 1.3c-.1.2-.1.5-.1.8V19h-3V8h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.4 1.3 3.4 4.1z"/></svg>
+            LinkedIn
+          </a>
+          <a class="pill" href="https://twitter.com/abdouaziiz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.51 7.435L22 22h-6.84l-4.78-6.246L4.8 22H2.04l6.96-7.95L1.5 2h7.02l4.32 5.71L18.244 2zm-1.2 18.4h1.86L7.04 3.5H5.06z"/></svg>
+            X / Twitter
+          </a>
+          <a class="pill" href="https://huggingface.co/abdouaziiz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            Hugging Face
+          </a>
+          <a class="pill" href="https://scholar.google.com/citations?user=LiwUUr4AAAAJ" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 9l10 6 10-6-10-6Z"/><path d="M6 11v5a6 6 0 0 0 12 0v-5"/></svg>
+            Scholar
+          </a>
+        </div>
+      </div>
+
+      <!-- Replace src with your photo path. /assets/portrait.jpg works on GH Pages. -->
+      <div class="portrait">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEXNg-LvmQkeQ/profile-displayphoto-crop_800_800/B4DZv8bbRlJwAI-/0/1769466609212?e=1778716800&v=beta&t=jOSYNTl5WVS1uxmbto3lyLlA2AFPNxeI1_EbMPbnSPQ" alt="Abdou Aziz Diop"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="portrait-empty" style="display:none;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="9" r="3.5"/>
+            <path d="M5 20a7 7 0 0 1 14 0"/>
+          </svg>
+          add a photo<br/>at /assets/portrait.jpg
+        </div>
+      </div>
+    </header>
+
+    <!-- ─────────────── NEWS ─────────────── -->
+    <section id="news" class="reveal">
+      <div class="sec-head">
+        <div class="sec-label">01 — News</div>
+        <h2 class="sec-title">Recent <em>updates</em></h2>
+      </div>
+      <div class="sec-body">
+        <div class="news-list">
+
+          <div class="news-item">
+            <div class="news-date">2026</div>
+            <div class="news-text">
+              Working on a unified end-to-end <strong>S2ST architecture</strong> for Wolof–French and Pulaar–French language pairs.
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2025</div>
+            <div class="news-text">
+              Released a fine-tuned <strong>Whisper</strong> checkpoint for Wolof — among the first publicly available Wolof ASR models.
+              <span class="tag">open-source</span>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2024</div>
+            <div class="news-text">
+              Co-author on <a href="https://arxiv.org/abs/2305.06897" target="_blank" rel="noopener">AfriQA</a> — cross-lingual open-retrieval QA across 10 African languages, presented at EMNLP 2023 Findings.
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2023</div>
+            <div class="news-text">
+              Started PhD in <strong>Speech-to-Speech Translation</strong> at UCAD, Dakar.
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2022</div>
+            <div class="news-text">
+              Released the open-source <a href="https://github.com/abdouaziz/wolof" target="_blank" rel="noopener"><strong>Wolof library</strong></a> on PyTorch + Transformers — text classification, NMT, and ASR for Wolof.
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2021</div>
+            <div class="news-text">
+              <strong>YACINE</strong>, our Wolof voice assistant, won 1st prize at the Cheikh Anta Diop Day organized by IFAN.
+              <span class="tag">1st prize</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── EXPERIENCE ─────────────── -->
+    <section id="experience" class="reveal">
+      <div class="sec-head">
+        <div class="sec-label">02 — Experience</div>
+        <h2 class="sec-title">Where I've <em>worked</em></h2>
+      </div>
+      <div class="sec-body">
+        <div class="xp">
+
+          <div class="xp-item">
+            <div class="xp-date">2023 — present</div>
+            <div>
+              <h3 class="xp-role">PhD Researcher · Speech-to-Speech Translation</h3>
+              <p class="xp-org">Université Cheikh Anta Diop <em>· Dakar, Senegal</em></p>
+              <ul class="xp-bullets">
+                <li>End-to-end and cascaded S2ST systems for Wolof, Pulaar, and other West African languages.</li>
+                <li>Self-supervised learning for ASR — pre-training and fine-tuning Wav2Vec2 / Whisper for low-resource settings.</li>
+                <li>Teaching Assistant for Machine Learning, Deep Learning, and NLP courses.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-date">2022 — present</div>
+            <div>
+              <h3 class="xp-role">Lead Data Scientist</h3>
+              <p class="xp-org">LAfricaMobile <em>· Dakar, Senegal</em></p>
+              <ul class="xp-bullets">
+                <li>Lead the data science team on NLU/NLG and end-to-end speech systems for local languages.</li>
+                <li>Designed and shipped an end-to-end TTS system for a Senegalese language — dataset, model, deployment.</li>
+                <li>Production ML infrastructure: model serving, monitoring, and continuous evaluation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-date">2021 — 2022</div>
+            <div>
+              <h3 class="xp-role">NLP Research Engineer · Wolof Project Co-Lead</h3>
+              <p class="xp-org">Omdena <em>· Remote</em></p>
+              <ul class="xp-bullets">
+                <li>Co-led an Omdena chapter project on text classification and NLP for Wolof.</li>
+                <li>Built and open-sourced the <a href="https://github.com/abdouaziz/wolof" target="_blank" rel="noopener">Wolof library</a> for ASR, NMT, and classification.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-date">2020 — 2022</div>
+            <div>
+              <h3 class="xp-role">Data Scientist · Software Engineer</h3>
+              <p class="xp-org">Various roles <em>· Senegal</em></p>
+              <ul class="xp-bullets">
+                <li>Compliance modelling for banking clients (project <em>Ganeyi Compliance</em>).</li>
+                <li>Mail / "Affranchissement" module as a software engineer.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── RESEARCH ─────────────── -->
+    <section id="research" class="reveal">
+      <div class="sec-head">
+        <div class="sec-label">03 — Research</div>
+        <h2 class="sec-title">Selected <em>publications</em></h2>
+      </div>
+      <div class="sec-body">
+        <div class="cards">
+
+          <article class="card">
+            <h3>
+              <a href="https://arxiv.org/abs/2305.06897" target="_blank" rel="noopener">
+                AfriQA: Cross-lingual Open-Retrieval Question Answering for African Languages
+              </a>
+            </h3>
+            <p class="meta">Findings of EMNLP 2023 · Ogundepo, Gwadabe, Rivera, Clark, Ruder, Adelani, <strong>Diop</strong> et al.</p>
+            <p>The first cross-lingual open-retrieval QA dataset for 10 African languages — establishing benchmarks for multilingual retrieval and reader systems on truly low-resource languages.</p>
+            <div class="tags">
+              <span class="tag-chip">multilingual</span>
+              <span class="tag-chip">QA</span>
+              <span class="tag-chip">benchmarks</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Towards End-to-End Speech-to-Speech Translation for Low-Resource African Languages</h3>
+            <p class="meta">Work in progress · 2026</p>
+            <p>Comparing direct and cascaded S2ST architectures for Wolof–French and Pulaar–French, with a focus on data-efficient pre-training strategies and evaluation under limited parallel speech.</p>
+            <div class="tags">
+              <span class="tag-chip">S2ST</span>
+              <span class="tag-chip">low-resource</span>
+              <span class="tag-chip">African languages</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Fine-Tuning Whisper for Wolof: A Low-Resource ASR Study</h3>
+            <p class="meta">Preprint · 2025</p>
+            <p>Empirical study of Whisper fine-tuning regimes for Wolof — examining data scale, augmentation, and dialectal generalization. Released open checkpoints and a 120h transcribed Wolof corpus.</p>
+            <div class="tags">
+              <span class="tag-chip">ASR</span>
+              <span class="tag-chip">Whisper</span>
+              <span class="tag-chip">Wolof</span>
+            </div>
+            <div class="card-links">
+              <a href="https://huggingface.co/abdouaziiz" target="_blank" rel="noopener">model</a>
+              <a href="https://github.com/abdouaziz" target="_blank" rel="noopener">code</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Can Language Models Teach Wav2Vec to Learn Representations?</h3>
+            <p class="meta">Research note · 2023</p>
+            <p>Proof-of-concept on knowledge distillation from a frozen BERT teacher into a Wav2Vec2 student — exploring whether textual contextual representations can guide acoustic self-supervised learning when paired data is scarce.</p>
+            <div class="tags">
+              <span class="tag-chip">SSL</span>
+              <span class="tag-chip">distillation</span>
+              <span class="tag-chip">Wav2Vec2</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/abdouaziz/encoder2teach" target="_blank" rel="noopener">code</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Rank-Based Cryptography: Encryption &amp; Signature</h3>
+            <p class="meta">M.Sc. Thesis, Mathematics · UCAD · 2018</p>
+            <p>Master's thesis on rank-metric codes and their application to post-quantum encryption and digital signature schemes.</p>
+            <div class="tags">
+              <span class="tag-chip">cryptography</span>
+              <span class="tag-chip">coding theory</span>
+            </div>
+          </article>
+
+        </div>
+
+        <a class="more-link" href="https://scholar.google.com/citations?user=LiwUUr4AAAAJ" target="_blank" rel="noopener">
+          Full publication list on Google Scholar
+        </a>
+      </div>
+    </section>
+
+    <!-- ─────────────── PROJECTS ─────────────── -->
+    <section id="projects" class="reveal">
+      <div class="sec-head">
+        <div class="sec-label">04 — Projects</div>
+        <h2 class="sec-title">Open-source <em>work</em></h2>
+      </div>
+      <div class="sec-body">
+        <div class="cards">
+
+          <article class="card">
+            <h3>
+              <a href="https://github.com/abdouaziz/wolof" target="_blank" rel="noopener">Wolof</a>
+              <span class="award">★ 31</span>
+            </h3>
+            <p class="meta">Python · PyTorch · 🤗 Transformers</p>
+            <p>An NLP toolkit for the Wolof language: text classification, neural machine translation, and automatic speech recognition. Designed to be simple, easy to use, and a starting point for low-resource African NLP.</p>
+            <div class="tags">
+              <span class="tag-chip">NLP</span>
+              <span class="tag-chip">ASR</span>
+              <span class="tag-chip">NMT</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>YACINE — Wolof Voice Assistant</h3>
+            <p class="meta">2021 · 1st prize, Cheikh Anta Diop Day (IFAN)</p>
+            <p>A voice assistant in Wolof, in the spirit of Siri / Alexa, with built-in code-switching detection and correction. Designed to make digital tools accessible — including for non-literate users — in agriculture, fishing, education, and healthcare.</p>
+            <div class="tags">
+              <span class="tag-chip">ASR</span>
+              <span class="tag-chip">TTS</span>
+              <span class="tag-chip">code-switching</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://github.com/abdouaziz/translatotron" target="_blank" rel="noopener">Translatotron</a>
+            </h3>
+            <p class="meta">Jupyter · TensorFlow / PyTorch</p>
+            <p>An implementation study of direct speech-to-speech translation with a sequence-to-sequence model — re-creating the Translatotron architecture as a foundation for African-language S2ST experiments.</p>
+            <div class="tags">
+              <span class="tag-chip">S2ST</span>
+              <span class="tag-chip">seq2seq</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://github.com/abdouaziz/nac_asr" target="_blank" rel="noopener">NAC-ASR</a>
+            </h3>
+            <p class="meta">Python · Research prototype</p>
+            <p>A study of <strong>Neural Audio Codecs</strong> as discrete representations for ASR — investigating whether quantized codec tokens (à la EnCodec / SoundStream) can serve as efficient inputs for downstream speech recognition.</p>
+            <div class="tags">
+              <span class="tag-chip">ASR</span>
+              <span class="tag-chip">audio codecs</span>
+              <span class="tag-chip">tokenization</span>
+            </div>
+          </article>
+
+        </div>
+        <a class="more-link" href="https://github.com/abdouaziz" target="_blank" rel="noopener">
+          More on GitHub
+        </a>
+      </div>
+    </section>
+
+    <!-- ─────────────── SKILLS ─────────────── -->
+    <section id="skills" class="reveal">
+      <div class="sec-head">
+        <div class="sec-label">05 — Stack</div>
+        <h2 class="sec-title">Technical <em>strengths</em></h2>
+      </div>
+      <div class="sec-body">
+        <div class="skills">
+
+          <div class="skill-group">
+            <h4>Speech</h4>
+            <p>Whisper <span class="sep">·</span> Wav2Vec2 <span class="sep">·</span> HuBERT <span class="sep">·</span> ASR <span class="sep">·</span> TTS <span class="sep">·</span> S2ST <span class="sep">·</span> Self-supervised pre-training <span class="sep">·</span> Neural audio codecs</p>
+          </div>
+
+          <div class="skill-group">
+            <h4>NLP</h4>
+            <p>Transformers <span class="sep">·</span> NMT <span class="sep">·</span> Tokenization <span class="sep">·</span> Language modelling <span class="sep">·</span> Multilingual evaluation <span class="sep">·</span> Low-resource methods</p>
+          </div>
+
+          <div class="skill-group">
+            <h4>Engineering &amp; MLOps</h4>
+            <p>Python <span class="sep">·</span> PyTorch <span class="sep">·</span> 🤗 Transformers / Datasets <span class="sep">·</span> FastAPI <span class="sep">·</span> Docker <span class="sep">·</span> MLflow <span class="sep">·</span> W&amp;B <span class="sep">·</span> AWS</p>
+          </div>
+
+          <div class="skill-group">
+            <h4>Foundations</h4>
+            <p>Mathematics <span class="sep">·</span> Coding theory <span class="sep">·</span> Statistical learning <span class="sep">·</span> Information systems <span class="sep">·</span> Software engineering</p>
+          </div>
+
+          <div class="skill-group">
+            <h4>Languages spoken</h4>
+            <p>Wolof <span class="sep">·</span> French <span class="sep">·</span> English <span class="sep">·</span> Arabic (intermediate)</p>
+          </div>
+
+          <div class="skill-group">
+            <h4>Teaching</h4>
+            <p>Machine Learning <span class="sep">·</span> Deep Learning <span class="sep">·</span> NLP <span class="sep">·</span> TA at UCAD</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─────────────── FOOTER ─────────────── -->
+  <footer class="wrap">
+    <div>© 2026 · Abdou Aziz Diop · Dakar, Senegal</div>
+    <div>
+      <a href="mailto:abdouaziz@gmail.com">abdouaziz@gmail.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/abdouaziz" target="_blank" rel="noopener">github</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/abdouaziiz/" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal-on-scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
