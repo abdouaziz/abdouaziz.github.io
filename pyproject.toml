@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lamia"
+version = "0.1.0"
+description = "Python client for the LAM TTS API — French text to African-language speech"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Abdou Aziz", email = "abdouaziz@gmail.com" }]
+keywords = ["tts", "speech", "african-languages", "wolof", "nlp"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-httpx", "ruff"]
+
+[project.urls]
+Homepage = "https://github.com/abdouaziz/lamia"
+Documentation = "https://ttsapi.lafricamobile.com/api/docs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["lamia"]
+
+[tool.ruff]
+line-length = 100
