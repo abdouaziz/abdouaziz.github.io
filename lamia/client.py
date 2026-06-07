@@ -24,27 +24,33 @@ _BASE_URL = "https://ttsapi.lafricamobile.com"
 class Lamia:
     """Client for the LAM TTS API.
 
-    Example::
+    Authenticate with an API key::
+
+        client = Lamia(api_key="ae_live_...")
+
+    Or with username and password::
 
         client = Lamia(username="user@example.com", password="secret")
-        result = client.synthesize("Bonjour le monde", to_lang="wolof", pitch=0, speed=1)
-        print(result.path_audio)
     """
 
     def __init__(
         self,
-        username: str,
-        password: str,
+        username: str | None = None,
+        password: str | None = None,
         *,
+        api_key: str | None = None,
         base_url: str = _BASE_URL,
         timeout: float = 30.0,
     ) -> None:
+        if api_key is None and (username is None or password is None):
+            raise ValueError("Provide either api_key or both username and password.")
         self._username = username
         self._password = password
         self._base_url = base_url.rstrip("/")
         self._timeout = timeout
-        self._access_token: str | None = None
+        self._access_token: str | None = api_key
         self._refresh_token: str | None = None
+        self._api_key = api_key
         self._lock = threading.Lock()
         self._http = httpx.Client(timeout=timeout)
 
@@ -90,7 +96,7 @@ class Lamia:
     def _ensure_authenticated(self) -> None:
         with self._lock:
             if self._access_token is None:
-                self.login()
+                self.login()  # only reached in username/password mode
 
     def _auth_headers(self) -> dict[str, str]:
         return {"Authorization": f"Bearer {self._access_token}"}
@@ -104,7 +110,8 @@ class Lamia:
             **kwargs,
         )
         if response.status_code == 401:
-            # Try refreshing once
+            if self._api_key:
+                raise AuthenticationError("Invalid or expired API key.")
             try:
                 self.refresh()
             except AuthenticationError:
@@ -251,6 +258,8 @@ class Lamia:
             data={"to_lang": to_lang},
         )
         if response.status_code == 401:
+            if self._api_key:
+                raise AuthenticationError("Invalid or expired API key.")
             try:
                 self.refresh()
             except AuthenticationError:
